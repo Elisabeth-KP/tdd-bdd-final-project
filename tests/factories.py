@@ -22,13 +22,13 @@ from factory.fuzzy import FuzzyChoice, FuzzyDecimal
 from service.models import Product, Category
 
 
-class ProductFactory(factory.Factory):
-    """Creates fake products for testing"""
-
-    class Meta:
-        """Maps factory to data model"""
-
-        model = Product
-
-    id = factory.Sequence(lambda n: n)
-   ## Add code to create Fake Products 
+ class AccountFactory(factory.Factory):
+        """ Creates fake Accounts """
+        class Meta:
+            model = Account
+        id = factory.Sequence(lambda n: n)
+        name = factory.Faker("name")
+        email = factory.Faker("email")
+        phone_number = factory.Faker("phone_number")
+        disabled = FuzzyChoice(choices=[True, False])
+        date_joined = FuzzyDate(date(2008, 1, 1))
